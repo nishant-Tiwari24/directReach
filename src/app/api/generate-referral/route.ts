@@ -21,6 +21,7 @@ export async function POST(req: Request, res: NextResponse) {
     });
 
     const generatedReferral = completion.choices[0].message.content;
+    console.log({generatedReferral})
     return NextResponse.json({ generatedReferral });
 }
 
