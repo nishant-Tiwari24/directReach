@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import Select from "react-select";
 
 const HunterEmailFinder = () => {
   const [companyName, setCompanyName] = useState("");
@@ -39,9 +40,52 @@ const HunterEmailFinder = () => {
     }
   };
 
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      backgroundColor: "#000",
+      borderColor: "#101D33",
+      color: "#03060E",
+    }),
+    option: (provided: any, state: { isSelected: any }) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#004BE1" : "#03060E",
+      color: "#7E8493",
+      "&:hover": {
+        backgroundColor: "#004BE1",
+        color: "#7E8493",
+      },
+    }),
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "#7E8493",
+    }),
+    multiValue: (provided: any) => ({
+      ...provided,
+      backgroundColor: "#fff",
+      color: "#7E8493",
+    }),
+    placeholder: (provided: any) => ({
+      ...provided,
+      color: "#7E8493",
+    }),
+  };
+
+
   return (
     <section className="w-full max-w-2xl mx-auto py-8">
       <div className="flex flex-col space-y-4">
+      {/* <Select
+              required
+              name="education"
+              options={['I want an Interview', 'I want Indusrty connections, I am just expanding my network','I want to send a follow up message']}
+              
+              className="basic-single-select text-left"
+              classNamePrefix="select"
+              placeholder="Select your college"
+              styles={customStyles}
+            /> */}
+
         <Input
           type="text"
           placeholder="Enter Company Domain (e.g., reddit.com)"

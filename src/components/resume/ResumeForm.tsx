@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import axios from "axios";
 import Select from "react-select";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const MultiInputForm = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +21,8 @@ const MultiInputForm = () => {
     leetcodeUsername: "",
     projects: [],
   });
+
+  const createDocument = useMutation(api.documents.createProfile)
 
   const [loading, setLoading] = useState(false);
   const [collegeOptions, setCollegeOptions] = useState([]);
@@ -149,16 +153,28 @@ const MultiInputForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      await createDocument({
+        education: formData.education,
+        skills: formData.skills,
+        experience: formData.experience,
+        interests: formData.interests,
+        location: formData.location,
+        githubUsername: formData.githubUsername,
+        leetcodeUsername: formData.leetcodeUsername,
+        projects: formData.projects,
+      });
       const response = await axios.post("/api/generate-email", formData);
       const generatedEmail = response.data.generatedEmail;
       localStorage.setItem("generatedEmail", generatedEmail);
+  
       router.push(`/discover/email-generated`);
     } catch (error) {
-      console.error("Error generating email:", error);
+      console.error("Error creating document:", error);
     } finally {
       setLoading(false);
     }
   };
+  
 
   const skillsOptions = [
     { value: "JavaScript", label: "JavaScript" },
