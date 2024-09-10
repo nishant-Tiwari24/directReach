@@ -7,8 +7,8 @@ import Select from "react-select";
 const HunterEmailFinder = () => {
   const [companyName, setCompanyName] = useState("");
   const [employeeName, setEmployeeName] = useState("");
-  const [JobTitle, setJobTitle] = useState("");
-  const [JobRole, SetJobRole] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [jobRole, setJobRole] = useState("");
   const [email, setEmail] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -71,20 +71,25 @@ const HunterEmailFinder = () => {
     }),
   };
 
+  // Options array should have value and label pairs
+  const options = [
+    { value: 'interview', label: 'I want an Interview' },
+    { value: 'networking', label: 'I want Industry connections, I am just expanding my network' },
+    { value: 'follow-up', label: 'I want to send a follow-up message' }
+  ];
 
   return (
     <section className="w-full max-w-2xl mx-auto py-8">
       <div className="flex flex-col space-y-4">
-      {/* <Select
-              required
-              name="education"
-              options={['I want an Interview', 'I want Indusrty connections, I am just expanding my network','I want to send a follow up message']}
-              
-              className="basic-single-select text-left"
-              classNamePrefix="select"
-              placeholder="Select your college"
-              styles={customStyles}
-            /> */}
+        <Select
+          required
+          name="education"
+          options={options}
+          className="basic-single-select text-left"
+          classNamePrefix="select"
+          placeholder="Select your purpose"
+          styles={customStyles}
+        />
 
         <Input
           type="text"
@@ -96,15 +101,15 @@ const HunterEmailFinder = () => {
         <Input
           type="text"
           placeholder="Enter Job Title (e.g., Software engineer)"
-          value={employeeName}
+          value={jobTitle}
           onChange={(e) => setJobTitle(e.target.value)}
         />
 
         <Input
           type="text"
           placeholder="Enter Job Role (e.g., Internship, SDE1)"
-          value={employeeName}
-          onChange={(e) => SetJobRole(e.target.value)}
+          value={jobRole}
+          onChange={(e) => setJobRole(e.target.value)}
         />
 
         <Input

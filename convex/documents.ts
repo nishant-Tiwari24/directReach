@@ -10,7 +10,8 @@ export const createProfile = mutation({
     location: v.string(),
     githubUsername: v.string(),
     leetcodeUsername: v.string(),
-    projects: v.array(v.string())
+    projects: v.array(v.string()),
+
   },
   handler: async (ctx, args) => {
     const newProfileId = await ctx.db.insert('profiles', {

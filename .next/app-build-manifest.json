@@ -1,15 +1,14 @@
 {
   "pages": {
-    "/discover/email-generated/page": [
+    "/(marketing)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/discover/email-generated/page.css",
-      "static/chunks/app/discover/email-generated/page.js"
+      "static/chunks/app/(marketing)/page.js"
     ],
-    "/discover/layout": [
+    "/(marketing)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/discover/layout.js"
+      "static/chunks/app/(marketing)/layout.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -21,6 +20,11 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/discover/page.js"
+    ],
+    "/discover/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/discover/layout.js"
     ]
   }
 }

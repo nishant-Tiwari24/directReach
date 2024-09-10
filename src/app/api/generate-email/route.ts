@@ -61,7 +61,6 @@ export async function POST(req: Request) {
     ${emailTemplate} Tell about projects with project description in points for 
     Ensure that the generated email is professional, includes relevant details in short points, and is formatted using Markdown. of less than 100 words`;
 
-    // Generate email using OpenAI
     const completion = await openai.chat.completions.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
