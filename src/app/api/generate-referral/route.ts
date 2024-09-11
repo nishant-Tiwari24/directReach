@@ -5,7 +5,6 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function POST(req: Request, res: NextResponse) {
   const { companyName, employeeName: { firstName, lastName }, jobTitle, jobRole, purpose } = await req.json();
-
   const prompt = `You are an AI assistant tasked with creating a short, personalized email referral for an individual. Here are the details:
   - Company Name: ${companyName}
   - Employee's First Name: ${firstName}
@@ -14,7 +13,7 @@ export async function POST(req: Request, res: NextResponse) {
   - Job Role: ${jobRole}
   - Purpose of the Email: ${purpose}
 
-  Please craft a concise message of 40-50 words, highlighting the key strengths of the individual in relation to their job title and role, and aligning it with the purpose of the email.`;
+  Please craft a concise message (not a mail, no salutations required, no subject, just a great message for linkedin) of 40-50 words, highlighting the key strengths of the individual in relation to their job title and role, and aligning it with the purpose of the .`;
 
   const completion = await openai.chat.completions.create({
     messages: [
