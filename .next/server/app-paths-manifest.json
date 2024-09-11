@@ -1,4 +1,5 @@
 {
-  "/api/generate-email/route": "app/api/generate-email/route.js",
+  "/(marketing)/page": "app/(marketing)/page.js",
+  "/discover/page": "app/discover/page.js",
   "/discover/email-generated/page": "app/discover/email-generated/page.js"
 }

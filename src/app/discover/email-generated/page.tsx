@@ -9,27 +9,30 @@ import { ArrowRight } from "lucide-react";
 
 const EmailGenerated = () => {
   const [email, setEmail] = useState<string | null>(null);
+  const [referral, setReferral] = useState<string | null>(null);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("generatedEmail");
+    const storedReferral = localStorage.getItem("generatedReferral");
     if (storedEmail) {
       setEmail(storedEmail);
     }
+    if (storedReferral) {
+      setReferral(storedReferral);
+    }
   }, []);
 
-  const handleCopy = () => {
-    if (email) {
-      navigator.clipboard.writeText(email);
-      toast.success("Email copied to clipboard!", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
+  const handleCopy = (text: string, message: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (
@@ -38,7 +41,7 @@ const EmailGenerated = () => {
         <h1 className="text-2xl font-bold text-left">Email Generated</h1>
         {email && (
           <button
-            onClick={handleCopy}
+            onClick={() => handleCopy(email, "Email copied to clipboard!")}
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
           >
             Copy Email
@@ -47,13 +50,35 @@ const EmailGenerated = () => {
       </div>
 
       {email ? (
-        <div className="p-4 border border-zinc-500 rounded-md">
+        <div className="p-4 border border-zinc-500 rounded-md mb-6">
           <ReactMarkdown className="prose prose-lg text-left break-words">
             {email}
           </ReactMarkdown>
         </div>
       ) : (
         <p className="text-lg text-left">No email generated yet.</p>
+      )}
+
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold text-left">Referral Generated</h1>
+        {referral && (
+          <button
+            onClick={() => handleCopy(referral, "Referral copied to clipboard!")}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm"
+          >
+            Copy Referral
+          </button>
+        )}
+      </div>
+
+      {referral ? (
+        <div className="p-4 border border-zinc-500 rounded-md">
+          <ReactMarkdown className="prose prose-lg text-left break-words">
+            {referral}
+          </ReactMarkdown>
+        </div>
+      ) : (
+        <p className="text-lg text-left">No referral generated yet.</p>
       )}
 
       <div className="mt-6 self-center">

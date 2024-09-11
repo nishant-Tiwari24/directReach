@@ -11,7 +11,10 @@ export async function POST(req: Request, res: NextResponse) {
     Experience: ${formData.experience}
     Interests: ${formData.interests}
     Location: ${formData.location}.
-    `
+
+    Please keep the referral concise, around 40-50 words, highlighting only the key strengths and qualifications.
+    `;
+    
     const completion = await openai.chat.completions.create({
         messages: [
             { role: "system", content: "You are a professional refral writer" },

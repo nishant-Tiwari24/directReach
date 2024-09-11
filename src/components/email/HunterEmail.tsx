@@ -83,8 +83,9 @@ const HunterEmailFinder = () => {
       <div className="flex flex-col space-y-4">
         <Select
           required
-          name="education"
+          name="purpose"
           options={options}
+          value={options.find((option) => option.value === "interview")}
           className="basic-single-select text-left"
           classNamePrefix="select"
           placeholder="Select your purpose"

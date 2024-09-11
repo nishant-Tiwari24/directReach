@@ -7,7 +7,6 @@ const EmailGenerated = () => {
   const [emails, setEmails] = useState<string[]>([]);
 
   useEffect(() => {
-    // Check if window and localStorage are available
     if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
       const storedEmails = localStorage.getItem("emails");
       if (storedEmails) {
