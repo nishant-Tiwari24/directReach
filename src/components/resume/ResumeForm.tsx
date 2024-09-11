@@ -164,11 +164,8 @@ const MultiInputForm = () => {
         projects: formData.projects,
       });
       const response = await axios.post("/api/generate-email", formData);
-      const referralResponse = await axios.post("/api/generate-referral", formData);
       const generatedEmail = response.data.generatedEmail;
-      const generatedReferral = referralResponse.data.generatedReferral;
       localStorage.setItem("generatedEmail", generatedEmail);
-      localStorage.setItem("generatedReferral", generatedReferral);
       router.push(`/discover/email-generated`);
     } catch (error) {
       console.error("Error creating document:", error);
@@ -177,7 +174,6 @@ const MultiInputForm = () => {
     }
   };
   
-
   const skillsOptions = [
     { value: "JavaScript", label: "JavaScript" },
     { value: "Python", label: "Python" },

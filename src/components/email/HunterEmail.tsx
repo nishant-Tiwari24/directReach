@@ -3,18 +3,20 @@ import { useState } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Select from "react-select";
+import axios from "axios";
 
 const HunterEmailFinder = () => {
   const [companyName, setCompanyName] = useState("");
   const [employeeName, setEmployeeName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
+  const [purpose, setPurpose] = useState<string | null>("interview");
   const [jobRole, setJobRole] = useState("");
   const [email, setEmail] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleFindEmail = async () => {
-    if (!companyName || !employeeName) {
-      setError("Please provide both company and employee names.");
+    if (!companyName || !employeeName || !jobTitle || !jobRole || !purpose) {
+      setError("Please fill in all required fields.");
       return;
     }
 
@@ -25,13 +27,23 @@ const HunterEmailFinder = () => {
     try {
       const apiKey = "2301d3179995a5872ac5ad81bd7081056a31ecb8";
       const response = await fetch(
-        `https://api.hunter.io/v2/email-finder?domain=${companyName}&first_name=${firstName}&last_name=${lastName}&api_key=${apiKey}`
+        `https://api.hunter.io/v2/email-finder?domain=${companyName}.com&first_name=${firstName}&last_name=${lastName}&api_key=${apiKey}`
       );
-
       const data = await response.json();
 
       if (data.data && data.data.email) {
         setEmail(data.data.email);
+        localStorage.setItem("companyName", companyName);
+        localStorage.setItem("employeeName", employeeName);
+        const referralResponse = await axios.post("/api/generate-referral", {
+          companyName,
+          employeeName: { firstName, lastName },
+          jobTitle,
+          jobRole,
+          purpose,
+        });
+        const generatedReferral = referralResponse.data.generatedReferral;
+        localStorage.setItem("generatedReferral", generatedReferral);
       } else {
         setError("Email not found for this employee.");
       }
@@ -71,11 +83,11 @@ const HunterEmailFinder = () => {
     }),
   };
 
-  // Options array should have value and label pairs
   const options = [
-    { value: 'interview', label: 'I want an Interview' },
-    { value: 'networking', label: 'I want Industry connections, I am just expanding my network' },
-    { value: 'follow-up', label: 'I want to send a follow-up message' }
+    { value: "interview", label: "I want an Interview" },
+    { value: "networking", label: "I want Industry connections" },
+    { value: "job-application", label: "I want to apply for a job" },
+    { value: "follow-up", label: "I want to send a follow-up message" },
   ];
 
   return (
@@ -85,11 +97,14 @@ const HunterEmailFinder = () => {
           required
           name="purpose"
           options={options}
-          value={options.find((option) => option.value === "interview")}
+          value={options.find((option) => option.value === purpose)}
           className="basic-single-select text-left"
           classNamePrefix="select"
           placeholder="Select your purpose"
           styles={customStyles}
+          onChange={(selectedOption: any) =>
+            setPurpose(selectedOption?.value ?? null)
+          }
         />
 
         <Input
@@ -101,7 +116,7 @@ const HunterEmailFinder = () => {
 
         <Input
           type="text"
-          placeholder="Enter Job Title (e.g., Software engineer)"
+          placeholder="Enter Job Title (e.g., Software Engineer)"
           value={jobTitle}
           onChange={(e) => setJobTitle(e.target.value)}
         />

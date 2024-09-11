@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       `https://api.github.com/users/${formData.githubUsername}/repos`
     );
     const githubData = githubResponse.data;
-    const selectedRepos = formData.projects.join(", "); // Add selected repositories
+    const selectedRepos = formData.projects.join(", ");
     const githubRepos = githubData.public_repos;
     const githubFollowers = githubData.followers;
     const githubLanguages = Object.keys(githubData.language || {}).join(", ");
