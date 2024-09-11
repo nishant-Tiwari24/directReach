@@ -785,8 +785,14 @@ video {
 .-mt-40 {
   margin-top: -10rem;
 }
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
 .mb-4 {
   margin-bottom: 1rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .ml-1 {
   margin-left: 0.25rem;
@@ -820,12 +826,6 @@ video {
 }
 .mt-auto {
   margin-top: auto;
-}
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-.mb-2 {
-  margin-bottom: 0.5rem;
 }
 .flex {
   display: flex;
@@ -1185,9 +1185,6 @@ video {
   --tw-divide-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-divide-opacity));
 }
-.self-center {
-  align-self: center;
-}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1305,6 +1302,10 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
 .bg-card {
   background-color: hsl(var(--card));
 }
@@ -1320,6 +1321,10 @@ video {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
@@ -1351,14 +1356,6 @@ video {
 }
 .bg-white\/20 {
   background-color: rgb(255 255 255 / 0.2);
-}
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
-}
-.bg-green-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 163 74 / var(--tw-bg-opacity));
 }
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
@@ -1510,10 +1507,6 @@ video {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 .pb-8 {
   padding-bottom: 2rem;
@@ -2089,9 +2082,9 @@ video {
   background-color: hsl(var(--accent));
 }
 
-.hover\:bg-blue-600:hover {
+.hover\:bg-blue-700:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-destructive\/90:hover {
@@ -2102,23 +2095,13 @@ video {
   background-color: hsl(var(--foreground) / 0.9);
 }
 
-.hover\:bg-primary\/90:hover {
-  background-color: hsl(var(--primary) / 0.9);
-}
-
-.hover\:bg-blue-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-green-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(21 128 61 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-indigo-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(67 56 202 / var(--tw-bg-opacity));
+.hover\:bg-primary\/90:hover {
+  background-color: hsl(var(--primary) / 0.9);
 }
 
 .hover\:text-accent-foreground:hover {

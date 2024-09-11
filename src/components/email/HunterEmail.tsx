@@ -4,6 +4,8 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import Select from "react-select";
 import axios from "axios";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const HunterEmailFinder = () => {
   const [companyName, setCompanyName] = useState("");
@@ -13,6 +15,8 @@ const HunterEmailFinder = () => {
   const [jobRole, setJobRole] = useState("");
   const [email, setEmail] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const createDocument = useMutation(api.emailMutation.createEmailSearch);
 
   const handleFindEmail = async () => {
     if (!companyName || !employeeName || !jobTitle || !jobRole || !purpose) {
@@ -44,6 +48,16 @@ const HunterEmailFinder = () => {
         });
         const generatedReferral = referralResponse.data.generatedReferral;
         localStorage.setItem("generatedReferral", generatedReferral);
+
+        await createDocument({
+          companyName,
+          employeeName: { firstName, lastName },
+          jobTitle,
+          jobRole,
+          purpose,
+          email: data.data.email,
+          generatedReferral,
+        });
       } else {
         setError("Email not found for this employee.");
       }
