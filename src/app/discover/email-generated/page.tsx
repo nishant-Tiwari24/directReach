@@ -6,12 +6,14 @@ import "react-toastify/dist/ReactToastify.css";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const EmailGenerated = () => {
   const [email, setEmail] = useState<string | null>(null);
   const [referral, setReferral] = useState<string | null>(null);
   const [companyName, setCompanyName] = useState<string | null>(null);
   const [employeeName, setEmployeeName] = useState<string | null>(null);
+  const [isTextVisible, setIsTextVisible] = useState(false);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem("generatedEmail");
@@ -23,6 +25,11 @@ const EmailGenerated = () => {
     if (storedReferral) setReferral(storedReferral);
     if (storedCompanyName) setCompanyName(storedCompanyName);
     if (storedEmployeeName) setEmployeeName(storedEmployeeName);
+
+    // Delay to simulate AI text generation
+    setTimeout(() => {
+      setIsTextVisible(true);
+    }, 1000); // Adjust the delay as needed
   }, []);
 
   const handleLinkedInSearch = () => {
@@ -45,16 +52,23 @@ const EmailGenerated = () => {
         <h1 className="text-2xl font-bold text-left mb-2">Email Generated</h1>
 
         {email ? (
-          <div className="p-4 border border-zinc-500 rounded-md mb-4">
-            <ReactMarkdown className="prose prose-lg text-left break-words">
-              {email}
-            </ReactMarkdown>
-          </div>
+          isTextVisible && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="p-4 border border-zinc-500 rounded-md mb-4"
+            >
+              <ReactMarkdown className="prose prose-lg text-left break-words">
+                {email}
+              </ReactMarkdown>
+            </motion.div>
+          )
         ) : (
           <p className="text-lg text-left mb-4">No email generated yet.</p>
         )}
 
-        {email && (
+        {email && isTextVisible && (
           <div className="flex justify-end mt-2">
             <Button variant="white" className="mt-4 cursor-pointer" asChild>
               <Link
@@ -74,28 +88,26 @@ const EmailGenerated = () => {
         <h1 className="text-2xl font-bold text-left mb-2">Referral Generated</h1>
 
         {referral ? (
-          <div className="p-4 border border-zinc-500 rounded-md mb-4">
-            <ReactMarkdown className="prose prose-lg text-left break-words">
-              {referral}
-            </ReactMarkdown>
-          </div>
+          isTextVisible && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="p-4 border border-zinc-500 rounded-md mb-4"
+            >
+              <ReactMarkdown className="prose prose-lg text-left break-words">
+                {referral}
+              </ReactMarkdown>
+            </motion.div>
+          )
         ) : (
           <p className="text-lg text-left mb-4">No referral generated yet.</p>
         )}
 
         {employeeName && companyName && (
           <div className="flex justify-between items-center mt-4">
-            <Button
-              onClick={handleLinkedInSearch}
-
-            >
-              Find {employeeName} on LinkedIn
-            </Button>
-
-            <Button
-              onClick={handleCompanyLinkedInJobs}
-             
-            >
+            <Button onClick={handleLinkedInSearch}>Find {employeeName} on LinkedIn</Button>
+            <Button onClick={handleCompanyLinkedInJobs}>
               View {companyName} Jobs on LinkedIn
             </Button>
           </div>
