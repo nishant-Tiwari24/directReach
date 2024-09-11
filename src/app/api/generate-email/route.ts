@@ -27,9 +27,7 @@ export async function POST(req: Request) {
     const leetcodeRanking = leetcodeData.ranking;
 
     // Cold Email Template
-    const emailTemplate = `
-    **Subject**: Application for Software Developer Intern Position
-
+    const emailTemplate = ` Generate a string not a Markdown
     Dear Nishant Tiwari,
 
     I hope this message finds you well. I am writing to express my interest in the [Job Title] position at Welix Fintech that I found on LinkedIn.

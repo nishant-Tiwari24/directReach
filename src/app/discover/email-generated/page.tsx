@@ -54,12 +54,11 @@ const EmailGenerated = () => {
           <p className="text-lg text-left mb-4">No email generated yet.</p>
         )}
 
-        {/* Move the "Send to Recipient" button directly below the email */}
         {email && (
           <div className="flex justify-end mt-2">
             <Button variant="white" className="mt-4 cursor-pointer" asChild>
               <Link
-                href={`mailto:nishanttiwarii320@gmail.com?subject=Your Personalized Cold Email&body=${encodeURIComponent(
+                href={`mailto:${email}?subject= Application for Software Developer Intern Position &body=${encodeURIComponent(
                   email
                 )}`}
               >
@@ -84,19 +83,18 @@ const EmailGenerated = () => {
           <p className="text-lg text-left mb-4">No referral generated yet.</p>
         )}
 
-        {/* Adjust the button size and position one to the left and the other to the right */}
         {employeeName && companyName && (
           <div className="flex justify-between items-center mt-4">
             <Button
               onClick={handleLinkedInSearch}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-md text-sm transition-transform transform hover:scale-105"
+
             >
               Find {employeeName} on LinkedIn
             </Button>
 
             <Button
               onClick={handleCompanyLinkedInJobs}
-              className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md shadow-md text-sm transition-transform transform hover:scale-105"
+             
             >
               View {companyName} Jobs on LinkedIn
             </Button>

@@ -1,4 +1,5 @@
 {
   "/discover/email-generated/page": "app/discover/email-generated/page.js",
-  "/discover/page": "app/discover/page.js"
+  "/discover/page": "app/discover/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js"
 }
