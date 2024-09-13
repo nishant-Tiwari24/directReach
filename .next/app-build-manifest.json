@@ -1,5 +1,21 @@
 {
   "pages": {
+    "/discover/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/discover/page.js"
+    ],
+    "/discover/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/discover/layout.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
     "/(marketing)/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -10,22 +26,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(marketing)/layout.js"
     ],
-    "/layout": [
+    "/finder/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
+      "static/chunks/app/finder/page.js"
     ],
-    "/discover/email-generated/page": [
+    "/finder/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/discover/email-generated/page.css",
-      "static/chunks/app/discover/email-generated/page.js"
-    ],
-    "/discover/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/discover/layout.js"
+      "static/chunks/app/finder/layout.js"
     ]
   }
 }

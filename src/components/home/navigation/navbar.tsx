@@ -29,7 +29,7 @@ const Navbar = async () => {
               <Link href="#" className="hover:text-foreground/80 text-sm">
                 Verifier
               </Link>
-              <Link href="#" className="hover:text-foreground/80 text-sm">
+              <Link href="/finder" className="hover:text-foreground/80 text-sm">
                 Finder
               </Link>
             </ul>

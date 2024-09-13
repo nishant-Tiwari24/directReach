@@ -22,7 +22,7 @@ const MultiInputForm = () => {
     projects: [],
   });
 
-  const createDocument = useMutation(api.documents.createProfile)
+  const createDocument = useMutation(api.documents.createProfile);
 
   const [loading, setLoading] = useState(false);
   const [collegeOptions, setCollegeOptions] = useState([]);
@@ -173,7 +173,7 @@ const MultiInputForm = () => {
       setLoading(false);
     }
   };
-  
+
   const skillsOptions = [
     { value: "JavaScript", label: "JavaScript" },
     { value: "Python", label: "Python" },
