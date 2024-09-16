@@ -1,16 +1,17 @@
+"use client";
 import { Container, Icons, Wrapper } from "@/components";
-import { Button } from "@/components/ui/button";
-
+import { Button, buttonVariants } from "@/components/ui/button";
+import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import { LampContainer } from "@/components/ui/lamp";
 import { reviews } from "@/constants";
+import { auth } from "@clerk/nextjs/server";
 import { ArrowRight, ChevronRight, UserIcon, Zap } from "lucide-react";
 
 import Link from "next/link";
+import { Authenticated, Unauthenticated } from "convex/react";
 
 const HomePage = () => {
-  const firstRow = reviews.slice(0, reviews.length / 2);
-  const secondRow = reviews.slice(reviews.length / 2);
-
+  const { isSignedIn } = useAuth();
   return (
     <section className="w-full relative flex items-center justify-center flex-col px-4 md:px-0">
       {/* <Wrapper>
@@ -365,18 +366,35 @@ const HomePage = () => {
           <LampContainer>
             <div className="flex flex-col items-center justify-center relative w-full text-center">
               <h2 className="text-4xl lg:text-5xl xl:text-6xl lg:!leading-snug font-semibold mt-8">
-                Upload Your Resume And <br /> Land Your Dream Job 10x Faster!
+                Unlock Recruiter Emails with AI <br /> Land Your Dream Job 10x
+                Faster!
               </h2>
               <p className="text-muted-foreground mt-6 max-w-md mx-auto">
-                Upload your resume, generate the most polished cold email, skip
+                Upload your profile, generate the most polished cold email, skip
                 the search for emails, and directly send it to the company.
               </p>
-              <Button variant="white" className="mt-6 cursor-pointer" asChild>
-                <Link href={"/discover"}>
-                  Upload your Resume or Cover letter
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
+              {isSignedIn ? (
+                <Button variant="white" className="mt-6 cursor-pointer" asChild>
+                  <Link href="/discover">
+                    Send AI Crafted Mails to Recruiters
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </Button>
+              ) : (
+                <Button variant="white" className="mt-6 cursor-pointer" asChild>
+                  <Link
+                    href={""}
+                    className={buttonVariants({ size: "sm", variant: "ghost" })}
+                  >
+                    <Unauthenticated>
+                      <SignInButton />
+                    </Unauthenticated>
+                    <Authenticated>
+                      <UserButton />
+                    </Authenticated>
+                  </Link>
+                </Button>
+              )}
             </div>
           </LampContainer>
         </Container>

@@ -1,18 +1,5 @@
 {
-  "node": {
-    "83a45cb3f2419c3b98105217185e46d5850323f0": {
-      "workers": {
-        "app/discover/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fnishanttiwari%2Fprojects%2FDirectReach%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!",
-        "app/(marketing)/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fnishanttiwari%2Fprojects%2FDirectReach%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!",
-        "app/finder/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fnishanttiwari%2Fprojects%2FDirectReach%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%22invalidateCacheAction%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/discover/page": "action-browser",
-        "app/(marketing)/page": "action-browser",
-        "app/finder/page": "action-browser"
-      }
-    }
-  },
+  "node": {},
   "edge": {},
-  "encryptionKey": "t808c0rsusehqXUUwI30+vqE/wT8RroyEI4y3jsFa70="
+  "encryptionKey": "NSJPXW1heaZKcM/VIK5pwgZtuSk81XD6CImoQfAnYis="
 }

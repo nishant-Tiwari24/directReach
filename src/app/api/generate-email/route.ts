@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     const emailTemplate = ` Generate a string not a Markdown
     Dear Nishant Tiwari,
 
-    I hope this message finds you well. I am writing to express my interest in the [Job Title] position at Welix Fintech that I found on LinkedIn.
+    I hope this message finds you well. I am writing to express my interest in the Typescript Developer position at Welix Fintech that I found on LinkedIn.
 
     With [number] years of experience in , I believe my skills in ${formData.skills.join(
       ", "
@@ -38,7 +38,7 @@ export async function POST(req: Request) {
 
     Thank you for considering my application. I have attached my resume for your review and would appreciate the opportunity to discuss how my background and skills make me a strong candidate for this position.
 
-    I look forward to hearing from you.
+    I look forward to hearing from you. Hiring manager name is Nishant Tiwari.
 
     Best regards,
     `;
