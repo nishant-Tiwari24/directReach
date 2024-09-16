@@ -2,9 +2,9 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/api/generate-email/route": "app/api/generate-email/route.js",
   "/api/generate-referral/route": "app/api/generate-referral/route.js",
+  "/find-employee/page": "app/find-employee/page.js",
   "/discover/page": "app/discover/page.js",
   "/discover/email-generated/page": "app/discover/email-generated/page.js",
-  "/(marketing)/page": "app/(marketing)/page.js",
-  "/find-employee/page": "app/find-employee/page.js",
-  "/finder/page": "app/finder/page.js"
+  "/finder/page": "app/finder/page.js",
+  "/(marketing)/page": "app/(marketing)/page.js"
 }

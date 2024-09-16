@@ -47,7 +47,6 @@ export async function POST(req: Request) {
       console.error("Error fetching LeetCode data:", error);
     }
 
-    // Email template prompt
     const emailTemplate = `Generate a Markdown of 150 words
 
     I hope this message finds you well. I am writing to express my interest in the [Job Title] that I found on LinkedIn.
@@ -79,7 +78,7 @@ export async function POST(req: Request) {
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: prompt },
       ],
-      model: "gpt-4",
+      model: "gpt-4o-mini",
     });
 
     const generatedEmail =
