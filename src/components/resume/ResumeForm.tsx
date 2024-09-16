@@ -25,27 +25,104 @@ const MultiInputForm = () => {
   const createDocument = useMutation(api.documents.createProfile);
 
   const [loading, setLoading] = useState(false);
-  const [collegeOptions, setCollegeOptions] = useState([]);
   const [projectOptions, setProjectOptions] = useState([]);
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchColleges = async () => {
-      try {
-        const response = await axios.get(
-          "http://universities.hipolabs.com/search?country=India"
-        );
-        const collegeNames = response.data.map((college: any) => ({
-          value: college.name,
-          label: college.name,
-        }));
-        setCollegeOptions(collegeNames);
-      } catch (error) {
-        console.error("Error fetching college data:", error);
-      }
-    };
-    fetchColleges();
-  }, []);
+  const collegeOptions = [
+    {
+      value: "Indian Institute of Technology Bombay",
+      label: "Indian Institute of Technology Bombay",
+    },
+    {
+      value: "Indian Institute of Technology Delhi",
+      label: "Indian Institute of Technology Delhi",
+    },
+    {
+      value: "Indian Institute of Technology Kanpur",
+      label: "Indian Institute of Technology Kanpur",
+    },
+    {
+      value: "Indian Institute of Technology Kharagpur",
+      label: "Indian Institute of Technology Kharagpur",
+    },
+    {
+      value: "Indian Institute of Technology Madras",
+      label: "Indian Institute of Technology Madras",
+    },
+    {
+      value: "Indian Institute of Technology Roorkee",
+      label: "Indian Institute of Technology Roorkee",
+    },
+    {
+      value: "Indian Institute of Technology Guwahati",
+      label: "Indian Institute of Technology Guwahati",
+    },
+    {
+      value: "Birla Institute of Technology and Science, Pilani",
+      label: "Birla Institute of Technology and Science, Pilani",
+    },
+    {
+      value: "National Institute of Technology Trichy",
+      label: "National Institute of Technology Trichy",
+    },
+    {
+      value: "Indian Institute of Science Bangalore",
+      label: "Indian Institute of Science Bangalore",
+    },
+    { value: "Anna University, Chennai", label: "Anna University, Chennai" },
+    {
+      value: "Jawaharlal Nehru University",
+      label: "Jawaharlal Nehru University",
+    },
+    { value: "University of Delhi", label: "University of Delhi" },
+    { value: "Banaras Hindu University", label: "Banaras Hindu University" },
+    { value: "Aligarh Muslim University", label: "Aligarh Muslim University" },
+    { value: "Jamia Millia Islamia", label: "Jamia Millia Islamia" },
+    { value: "Amity University", label: "Amity University" },
+    {
+      value: "Vellore Institute of Technology",
+      label: "Vellore Institute of Technology",
+    },
+    {
+      value: "Manipal Academy of Higher Education",
+      label: "Manipal Academy of Higher Education",
+    },
+    {
+      value: "Savitribai Phule Pune University",
+      label: "Savitribai Phule Pune University",
+    },
+    {
+      value: "Symbiosis International University",
+      label: "Symbiosis International University",
+    },
+    { value: "Shiv Nadar University", label: "Shiv Nadar University" },
+    {
+      value: "SRM Institute of Science and Technology",
+      label: "SRM Institute of Science and Technology",
+    },
+    {
+      value: "Thapar Institute of Engineering and Technology",
+      label: "Thapar Institute of Engineering and Technology",
+    },
+    {
+      value: "Tata Institute of Social Sciences",
+      label: "Tata Institute of Social Sciences",
+    },
+    {
+      value: "Xavier School of Management (XLRI)",
+      label: "Xavier School of Management (XLRI)",
+    },
+    {
+      value: "Indian Statistical Institute Kolkata",
+      label: "Indian Statistical Institute Kolkata",
+    },
+    {
+      value: "Delhi Technological University",
+      label: "Delhi Technological University",
+    },
+    { value: "Jadavpur University", label: "Jadavpur University" },
+    { value: "Bharathiar University", label: "Bharathiar University" },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
