@@ -29,9 +29,9 @@ const HunterEmailFinder = () => {
     const lastName = lastNameArray.join(" ");
 
     try {
-      const apiKey = process.env.HUNTER_APIKEY;
+      const apiKey = "2301d3179995a5872ac5ad81bd7081056a31ecb8";
       const response = await fetch(
-        `https://api.hunter.io/v2/email-finder?domain=${companyName}.com&first_name=${firstName}&last_name=${lastName}&api_key=${apiKey}`
+        `https://api.hunter.io/v2/email-finder?domain=${companyName}&first_name=${firstName}&last_name=${lastName}&api_key=${apiKey}`
       );
       const data = await response.json();
 
